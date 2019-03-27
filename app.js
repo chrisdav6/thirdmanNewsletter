@@ -24,6 +24,15 @@ app.get("/", function(req, res) {
   res.sendFile("index.html");
 });
 
+//Index - POST
+app.post("/", function(req, res) {
+
+  //Grab Data from form inputs
+  let { fname, lname, email } = req.body;
+  res.send(`${fname}, ${lname}, ${email}`);
+
+});
+
 //----- SERVER ------//
 
 //Start Server
