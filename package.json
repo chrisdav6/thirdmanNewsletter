@@ -1,0 +1,17 @@
+{
+  "name": "02-mailchimpnewsletter",
+  "version": "1.0.0",
+  "description": "Newsletter Signup",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "startDev": "nodemon app.js"
+  },
+  "author": "Chris Davis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "request": "^2.88.0"
+  }
+}

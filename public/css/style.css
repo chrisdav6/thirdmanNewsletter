@@ -1,0 +1,41 @@
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: black;
+  font-family: "Poppins", sans-serif;
+}
+
+.signup {
+  max-width: 350px;
+  margin: 0 auto;
+  text-align: center;
+  color: #fff;
+}
+
+.logo {
+  max-width: 150px;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.myInput {
+  padding: 1.25em 1em;
+  font-size: 1.15rem;
+}
+
+.btn-third {
+  background: rgb(248, 206, 17);
+  transition: .3s;
+  font-size: 1.5rem;
+  font-weight: bold;
+  padding: .75em;
+  border-radius: 0;
+}
+
+.btn-third:hover {
+  background: rgb(255, 232, 129);
+}
+
