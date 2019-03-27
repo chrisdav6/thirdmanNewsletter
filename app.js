@@ -70,6 +70,3 @@ app.post("/", function(req, res) {
 app.listen(port, function() {
   console.log(`Server started on port ${port}`);
 });
-
-//7593eab14281a639148ed7c916511938-us20
-//35ab6288fd
