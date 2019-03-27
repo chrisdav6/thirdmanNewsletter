@@ -1,6 +1,5 @@
 const express = require("express");
 const app = express();
-const path = require("path");
 const request = require("request");
 const helmet = require("helmet");
 const dotenv = require('dotenv').config();
@@ -12,7 +11,7 @@ const port = process.env.PORT || 3000;
 app.use(helmet());
 
 //SetUp Static Files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 //Parse Body
 app.use(express.urlencoded({extended:true}));
@@ -22,7 +21,7 @@ app.use(express.json());
 
 //Index - GET
 app.get("/", function(req, res) {
-  res.sendFile("index.html");
+  res.sendFile(__dirname + "/index.html");
 });
 
 //Index - POST
@@ -60,9 +59,13 @@ app.post("/", function(req, res) {
   //Send Request to MailChimp
   request(options, function(err, response, body) {
     if(err) {
-      res.send(err);
+      res.send(`Sorry, something went wrong. Please try agian. ${err}`);
     } else {
-      res.send("Success");
+      if(response.statusCode == 200) {
+        res.sendFile(__dirname + "/success.html");
+      } else {
+        res.send(`Sorry, something went wrong. Please try agian.`);
+      }
     }
   });
 
