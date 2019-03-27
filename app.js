@@ -64,7 +64,7 @@ app.post("/", function(req, res) {
       if(response.statusCode == 200) {
         res.sendFile(__dirname + "/success.html");
       } else {
-        res.send(`Sorry, something went wrong. Please try agian.`);
+        res.sendFile(__dirname + "/failure.html");
       }
     }
   });
