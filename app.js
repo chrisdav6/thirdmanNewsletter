@@ -1,8 +1,9 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const request = require("express");
+const request = require("request");
 const helmet = require("helmet");
+const dotenv = require('dotenv').config();
 const port = process.env.PORT || 3000;
 
 //----- SETUP ------//
@@ -29,7 +30,37 @@ app.post("/", function(req, res) {
 
   //Grab Data from form inputs
   let { fname, lname, email } = req.body;
-  res.send(`${fname}, ${lname}, ${email}`);
+
+  //Create Data Object and stringify for MailChimp
+  let data = {
+    members: [
+      {
+        email_address: email,
+        status: "subscribed"
+      }
+    ]
+  };
+
+  let jsonData = JSON.stringify(data);
+
+  //Request Options
+  let options = {
+    url: "https://us20.api.mailchimp.com/3.0/lists/" + process.env.MAIL_LIST,
+    method: "POST",
+    headers: {
+      "Authorization": process.env.MAIL_API
+    },
+    body: jsonData
+  };
+
+  //Send Request to MailChimp
+  request(options, function(err, response, body) {
+    if(err) {
+      res.send(err);
+    } else {
+      res.send("Success");
+    }
+  });
 
 });
 
@@ -39,3 +70,6 @@ app.post("/", function(req, res) {
 app.listen(port, function() {
   console.log(`Server started on port ${port}`);
 });
+
+//7593eab14281a639148ed7c916511938-us20
+//35ab6288fd
