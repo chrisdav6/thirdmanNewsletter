@@ -39,3 +39,11 @@ h2 {
   background: rgb(255, 232, 129);
 }
 
+.response {
+  color: rgb(248, 206, 17);
+}
+
+.response p {
+  font-size: 1.5rem;
+}
+
